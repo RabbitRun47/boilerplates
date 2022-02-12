@@ -5,7 +5,8 @@
 **_Package versions last checked on 2022-02-12_**
 
 [React Native Environment Setup Docs](https://reactnative.dev/docs/environment-setup)\
-[How to install Android SDK and setup AVD Emulator without Android Studio](https://medium.com/michael-wallace/how-to-install-android-sdk-and-setup-avd-emulator-without-android-studio-aeb55c014264)
+[How to install Android SDK and setup AVD Emulator without Android Studio](https://medium.com/michael-wallace/how-to-install-android-sdk-and-setup-avd-emulator-without-android-studio-aeb55c014264)\
+[Setting up React Native development on Linux without installing Android Studio](https://medium.com/@khairold/setting-up-react-native-on-linux-without-android-studio-a65f3e011bbb)
 
 ### Node
 
@@ -36,7 +37,7 @@ sudo apt-get install openjdk-8-jre
     ```
 
 5. Add environment variables\
-   Add highlighted lines in `/etc/environment` as shown below.\
+   Add highlighted lines in `/etc/environment` as shown below.
    <pre><code>PATH="<span style="background-color: bisque;">/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
    <span style="background-color: bisque;">ANDROID_SDK_ROOT="/opt/android/sdk"</span>
    <span style="background-color: bisque;">ANDROID_HOME="/opt/android/sdk"</span></code></pre>
