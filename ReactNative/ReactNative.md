@@ -35,8 +35,8 @@ sudo apt-get install openjdk-8-jre
     sudo ./sdkmanager platform-tools emulator
     ```
 
-5. Add environment variables
-   Add highlighted lines in `/etc/environment` as shown below.
+5. Add environment variables\
+   Add highlighted lines in `/etc/environment` as shown below.\
    <code><pre>PATH="<mark>/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:</mark>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
    <mark>ANDROID_SDK_ROOT="/opt/android/sdk"</mark>
    <mark>ANDROID_HOME="/opt/android/sdk"</mark></pre></code>
