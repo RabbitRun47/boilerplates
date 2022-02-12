@@ -1,69 +1,63 @@
-# React Native Boilerplate Setup
+# React Native Boilerplate
+
+## Environment Setup
 
 **_Package versions last checked on 2022-02-12_**
 
-[React Native Docs](https://reactnative.dev/docs/environment-setup)
+[React Native Environment Setup Docs](https://reactnative.dev/docs/environment-setup)\
+[How to install Android SDK and setup AVD Emulator without Android Studio](https://medium.com/michael-wallace/how-to-install-android-sdk-and-setup-avd-emulator-without-android-studio-aeb55c014264)
 
-## Node
+### Node
 
 Install node using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-## JDK
+### JDK
 
-Install OpenJDK 8 (android sdk works best with Java 8) - [reference link](https://medium.com/michael-wallace/how-to-install-android-sdk-and-setup-avd-emulator-without-android-studio-aeb55c014264)
+```
+sudo apt-get install openjdk-8-jre
+```
 
-`sudo apt-get install openjdk-8-jre`
+### Android SDK and Emulator
 
-## Android SDK and Emulator
+1. Download Android SDK Command line tools from: Android Studio [site](https://developer.android.com/studio) > Download Options > Command line tools only
+2. Extract this zip and navigate to the folder containing `bin`, `lib` and other contents. Rename the folder (containing `bin`, `lib` and other contents) to `latest`.
+3. Move commandline tools
 
--   Download Android SDK Command line tools
-
-    Android Studio [page](https://developer.android.com/studio) > Download Options > Command line tools only
-
--   Extract this zip and navigate to the folder containing `bin`, `lib` and other contents.
--   Rename the folder (containing `bin`, `lib` and other contents) to `latest`
--   Move commandline tools
     ```
     sudo mkdir -p /opt/android/sdk/cmdline-tools
     sudo mv ./latest /opt/android/sdk/cmdline-tools
     ```
--   Download platform-tools and emulator package
+
+4. Download platform-tools and emulator package
+
     ```
     cd /opt/android/sdk/cmdline-tools/latest/bin
     sudo ./sdkmanager platform-tools emulator
     ```
--   Add environment variables
 
-    -   `sudo nano /etc/environment`
-    -   Prepend following lines in the `PATH` variable value
-        `/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:`
-    -   Add following lines below `PATH` variable declaration.
-        ```
-        ANDROID_SDK_ROOT="/opt/android/sdk"
-        ANDROID_HOME="/opt/android/sdk"
-        ```
-    -   After the change, it should look like this.
+5. Add environment variables
+   Add highlighted lines in `/etc/environment` as shown below.
+   <code>
+   <pre>PATH="<mark>/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:</mark>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+   <mark>ANDROID_SDK_ROOT="/opt/android/sdk"</mark>
+   <mark>ANDROID_HOME="/opt/android/sdk"</mark></pre>
+   </code>
 
-          <pre style="word-break: break-all;"><code>PATH="<mark>/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:</mark>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-          <mark>ANDROID_SDK_ROOT="/opt/android/sdk"
-          ANDROID_HOME="/opt/android/sdk"</mark></code></pre>
-
--   Download platform specific packages
+6. Download platform specific packages
     ```
     sudo /opt/android/sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-29"
     sudo /opt/android/sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-29;default;x86_64"
     sudo /opt/android/sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;29.0.2"
     ```
--   Create an AVD and run it
+7. Create an AVD and run it
 
     ```
     avdmanager create avd --name android29 --package "system-images;android-29;default;x86_64"
     emulator -avd android29
     ```
 
-    You can edit `~/.android/avd/<AVD name>.avd/config.ini` to configure your avd.
-
-    Currently active configurations can be find in `hardware-qemu.ini` file. This file just will be created after the emulator runs for the first time.
+    You can edit `~/.android/avd/<AVD name>.avd/config.ini` to configure your AVD.\
+    Currently active configurations can be found in `hardware-qemu.ini` (created after the emulator runs for the first time).
 
 ```
 npx react-native init <ProjectName>
