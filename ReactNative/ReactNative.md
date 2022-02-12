@@ -37,11 +37,9 @@ sudo apt-get install openjdk-8-jre
 
 5. Add environment variables
    Add highlighted lines in `/etc/environment` as shown below.
-   <code>
-   <pre>PATH="<mark>/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:</mark>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+   <code><pre>PATH="<mark>/opt/android/sdk/emulator:/opt/android/sdk/platform-tools:/opt/android/sdk/cmdline-tools/latest/bin:</mark>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
    <mark>ANDROID_SDK_ROOT="/opt/android/sdk"</mark>
-   <mark>ANDROID_HOME="/opt/android/sdk"</mark></pre>
-   </code>
+   <mark>ANDROID_HOME="/opt/android/sdk"</mark></pre></code>
 
 6. Download platform specific packages
     ```
