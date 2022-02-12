@@ -10,7 +10,7 @@ Install node using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ## JDK
 
-Install OpenJDK 8 (android sdk works best with Java 8) - reference [link](https://medium.com/michael-wallace/how-to-install-android-sdk-and-setup-avd-emulator-without-android-studio-aeb55c014264)
+Install OpenJDK 8 (android sdk works best with Java 8) - [reference link](https://medium.com/michael-wallace/how-to-install-android-sdk-and-setup-avd-emulator-without-android-studio-aeb55c014264)
 
 `sudo apt-get install openjdk-8-jre`
 
