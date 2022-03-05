@@ -57,7 +57,7 @@ sudo apt-get install openjdk-8-jdk
     You can edit `~/.android/avd/<AVD name>.avd/config.ini` to configure your AVD.\
     Currently active configurations can be found in `hardware-qemu.ini` (created after the emulator runs for the first time).
 
-    Last prefered `config.ini` changes
+    **Last prefered `config.ini` changes**
 
     ```
     hw.keyboard=yes
@@ -77,14 +77,13 @@ sudo apt-get install openjdk-8-jdk
 
 [react-native-rename - npm](https://www.npmjs.com/package/react-native-rename)
 
-1. Create the project\
+1. Create the project
 
-    |     | Case                                                          | Command                                                                           |
-    | --- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-    | 1   | create a project from scratch                                 | `npx react-native init <ProjectName>`                                             |
-    | 2   | create a TypeScript project from scratch                      | `npx react-native init <ProjectName> --template react-native-template-typescript` |
-    | 3   | rename an old initiated project                               | `npx react-native-rename <ProjectName>`                                           |
-    | 4   | rename an old initiated project with custom Bundle Identifier | `npx react-native-rename <ProjectName> -b <com.project.name>`                     |
+    | Case                                                          | Command                                                                           |
+    | ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+    | create a project from scratch                                 | `npx react-native init <ProjectName>`                                             |
+    | create a TypeScript project from scratch                      | `npx react-native init <ProjectName> --template react-native-template-typescript` |
+    | rename an old initiated project with custom Bundle Identifier | `npx react-native-rename <ProjectName> -b <com.project.name>`                     |
 
 2. Add necessary npm packages
 
@@ -94,16 +93,20 @@ sudo apt-get install openjdk-8-jdk
 
 ## Runnig the project
 
-**Note**: If you get the folowing error while running the project for thr first time `The SDK directory is not writable (/opt/android/sdk)`. Run the follwoing command to change the ownership of android sdk.
+```
+npm run android
+npm run start
+```
+
+**Note**: If you get the folowing error while running the project for thr first time:\
+`The SDK directory is not writable (/opt/android/sdk)`\
+Run the follwoing command to change the ownership of android sdk.
 
 ```
 sudo chown -R $(whoami) $ANDROID_HOME
 ```
 
-```
-npm run android
-npm run start
-```
+---
 
 ```
 npx react-native init <ProjectName>
