@@ -15,7 +15,7 @@ Install node using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 ### JDK
 
 ```
-sudo apt-get install openjdk-8-jre
+sudo apt-get install openjdk-8-jdk
 ```
 
 ### Android SDK and Emulator
@@ -48,15 +48,62 @@ sudo apt-get install openjdk-8-jre
     sudo /opt/android/sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-29;default;x86_64"
     sudo /opt/android/sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;29.0.2"
     ```
-7. Create an AVD and run it
+7. Create an AVD
 
     ```
-    avdmanager create avd --name android29 --package "system-images;android-29;default;x86_64"
-    emulator -avd android29
+    avdmanager create avd --name <avdName> --package "system-images;android-29;default;x86_64"
     ```
 
     You can edit `~/.android/avd/<AVD name>.avd/config.ini` to configure your AVD.\
     Currently active configurations can be found in `hardware-qemu.ini` (created after the emulator runs for the first time).
+
+    Last prefered `config.ini` changes
+
+    ```
+    hw.keyboard=yes
+    hw.lcd.density=320
+    hw.lcd.height=1200
+    hw.lcd.width=650
+    ```
+
+8. To Run an AVD
+    ```
+    emulator -avd <avdName>
+    ```
+
+## Project Setup
+
+**_Package versions last checked on 2022-03-05_**
+
+[react-native-rename - npm](https://www.npmjs.com/package/react-native-rename)
+
+1. Create the project\
+
+    |     | Case                                                          | Command                                                                           |
+    | --- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+    | 1   | create a project from scratch                                 | `npx react-native init <ProjectName>`                                             |
+    | 2   | create a TypeScript project from scratch                      | `npx react-native init <ProjectName> --template react-native-template-typescript` |
+    | 3   | rename an old initiated project                               | `npx react-native-rename <ProjectName>`                                           |
+    | 4   | rename an old initiated project with custom Bundle Identifier | `npx react-native-rename <ProjectName> -b <com.project.name>`                     |
+
+2. Add necessary npm packages
+
+    ```
+    npm install react-redux @types/react-redux @reduxjs/toolkit
+    ```
+
+## Runnig the project
+
+**Note**: If you get the folowing error while running the project for thr first time `The SDK directory is not writable (/opt/android/sdk)`. Run the follwoing command to change the ownership of android sdk.
+
+```
+sudo chown -R $(whoami) $ANDROID_HOME
+```
+
+```
+npm run android
+npm run start
+```
 
 ```
 npx react-native init <ProjectName>
@@ -64,7 +111,6 @@ cd <ProjectName>
 npm install @react-native-async-storage/async-storage
 npm install @react-navigation/native @react-navigation/stack
 npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
-npm install @reduxjs/toolkit react-redux
 npm install react-native-vector-icons
 npx react-native start
 npx react-native run-android
@@ -97,49 +143,6 @@ const App = () => {
 };
 
 export default App;
-```
-
-## /src/reducer/index.js
-
-```
-import { configureStore } from '@reduxjs/toolkit';
-import { coinsDataReducer } from './CoinsDataSlice';
-
-export const store = configureStore({
-    reducer: {
-        coinsData: coinsDataReducer,
-    },
-});
-```
-
-## Reducer Slice
-
-```
-import { createSlice } from '@reduxjs/toolkit';
-
-export const coinsDataSlice = createSlice({
-    name: 'coinsData',
-    initialState: {
-        value: []
-    },
-    reducers: {
-        updateCoinsData: (state, action) => {
-            state.value = action.payload;
-        },
-    },
-});
-
-export const { updateCoinsData } = coinsDataSlice.actions;
-export const coinsDataReducer = coinsDataSlice.reducer;
-
-/*
-import { useSelector, useDispatch } from 'react-redux';
-import { updateCoinsData } from "../../reducers/CoinsDataSlice";
-
-const coinsData = useSelector((state) => state.coinsData.value);
-const dispatch = useDispatch();
-dispatch(updateCoinsData(response));
-*/
 ```
 
 ## Async Storage
