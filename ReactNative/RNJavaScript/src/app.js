@@ -13,7 +13,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {sampleCounterSliceActions} from './reducer/sampleCounter';
 
-export const ViewableAppRoot = () => {
+export const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const dispatch = useDispatch();
   const sampleCounterValue = useSelector(state => state.sampleCounter.value);
@@ -23,9 +23,7 @@ export const ViewableAppRoot = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={[styles.section, styles.theme]}>
-          <Text style={[styles.title, styles.theme]}>
-            {JSON.stringify(sampleCounterValue)}
-          </Text>
+          <Text style={[styles.title, styles.theme]}>{sampleCounterValue}</Text>
           <TouchableOpacity
             onPress={() => {
               dispatch(sampleCounterSliceActions.addToSampleCounter(1));

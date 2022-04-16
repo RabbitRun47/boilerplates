@@ -2,14 +2,14 @@ import React from 'react';
 
 import {Provider} from 'react-redux';
 import {rootReducer} from './src/reducer';
-import {ViewableAppRoot} from './src/ViewableAppRoot';
+import {App} from './src/app';
 
-const App = () => {
+const AppRoot = () => {
   return (
     <Provider store={rootReducer}>
-      <ViewableAppRoot />
+      <App />
     </Provider>
   );
 };
 
-export default App;
+export default AppRoot;
