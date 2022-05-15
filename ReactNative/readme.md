@@ -89,6 +89,8 @@ sudo apt-get install openjdk-8-jdk
 
     ```
     npm install react-redux @types/react-redux @reduxjs/toolkit
+    npm install @react-navigation/native @react-navigation/native-stack react-native-screens react-native-safe-area-context
+    npm install react-native-vector-icons
     ```
 
 ## Runnig the project
@@ -109,43 +111,7 @@ sudo chown -R $(whoami) $ANDROID_HOME
 ---
 
 ```
-npx react-native init <ProjectName>
-cd <ProjectName>
 npm install @react-native-async-storage/async-storage
-npm install @react-navigation/native @react-navigation/stack
-npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
-npm install react-native-vector-icons
-npx react-native start
-npx react-native run-android
-```
-
-## App.js
-
-```
-// import line for react-native-gesture-handler should be at the top of your entry file, such as `index.js` or `App.js`
-import 'react-native-gesture-handler';
-
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Account } from './src/screens/Account';
-import { store } from './src/reducer';
-import { Provider } from 'react-redux';
-
-const Stack = createStackNavigator();
-const App = () => {
-    return (
-        <Provider store={store}>
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Your Account">
-                    <Stack.Screen name="Your Account" component={Account} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </Provider>
-    );
-};
-
-export default App;
 ```
 
 ## Async Storage

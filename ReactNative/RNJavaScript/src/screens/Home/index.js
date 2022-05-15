@@ -1,26 +1,21 @@
 import React from 'react';
 import {
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {sampleCounterSliceActions} from './reducer/sampleCounter';
+import {sampleCounterSliceActions} from '../../reducer/sampleCounter';
 
-export const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+export const Home = () => {
   const dispatch = useDispatch();
   const sampleCounterValue = useSelector(state => state.sampleCounter.value);
 
   return (
-    <SafeAreaView style={styles.theme}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <React.Fragment>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={[styles.section, styles.theme]}>
           <Text style={[styles.title, styles.theme]}>{sampleCounterValue}</Text>
@@ -42,7 +37,7 @@ export const App = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </React.Fragment>
   );
 };
 
